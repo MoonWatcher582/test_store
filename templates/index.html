@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Raritanium Games: Store </title>
+	</head>
+	<body>
+		<h1> Raritanium Games: Store </h1>
+
+		<h2> Games in-stock: </h2>
+
+		<ol>
+			{% for item in stock %}
+			<li> {{ item[1] }} </li>
+			{% endfor %}
+		</ol>
+
+		<hr>
+
+		<form action="/order">
+			<label> Which games would you like to purchase? </label><br />
+
+			<select name="games">
+				<option value=""> Please Select </option>
+				{% for item in stock %}
+				<option value="{{ item[0] }}"> {{ item[1] }} </option>
+				{% endfor %}
+			</select><br />
+
+			<label> Shipping Address: </label><br />
+			<textarea cols="80" rows="5" name="address"></textarea><br />
+			<label> Phone Number: </label><br />
+			<textarea cols="15" rows="1" name="phone"></textarea><br />
+
+			<input type="submit" value="Submit" />
+		</form>
+	</body>
+</html>
